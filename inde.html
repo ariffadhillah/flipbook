@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    @charset "UTF-8";
+    @import url("https://fonts.googleapis.com/css?family=Sree+Krushnadevaraya&display=swap");
+    @import url("https://fonts.googleapis.com/css?family=Catamaran&display=swap");
+
+    :root {
+      --margin: 50px;
+      --background: #e2e2f5;
+      --perspective: 1800px;
+      --transition: transform 1s .2s, z-index 0s 0.5s;
+      --yellow: #ffce14;
+    }
+
+    body .pages_page {
+      width: 50%;
+      position: absolute;
+      right: 0px;
+      height: 100%;
+      transform-origin: 0 50%;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .overlayimg {
+      /* background: rgba(255, 155, 0, 0.7019607843); */
+      /* position: fixed; */
+      width: 100%;
+      /* pointer-events: none; */
+      /* height: 100%; */
+      /* z-index: -1; */
+    }
+
+    .overlay img {
+      /* width: 100%; */
+    }
+
+    .overlay {
+      background: rgba(255, 155, 0, 0.7019607843);
+      position: fixed;
+      width: 100%;
+      pointer-events: none;
+      height: 100%;
+      z-index: -1;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      /* background: var(--background); */
+      height: 100vh;
+      overflow: hidden;
+      /* font-family: "Sree Krushnadevaraya", serif; */
+    }
+
+    body .pages {
+      width: calc(100% - var(--margin));
+      height: calc(63.5% - var(--margin));
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: auto;
+      top: 50%;
+      transform: translateY(-50%);
+      perspective: var(--perspective);
+      box-shadow: 0 41px 38px -20px #0a3150;
+      /* max-width: 1300px; */
+      /* max-height: 650px; */
+    }
+
+    body .pages input {
+      display: none;
+    }
+
+    body .pages_page {
+      pointer-events: none;
+      float: right;
+      transform-style: preserve-3d;
+    }
+
+    body .pages_page:nth-of-type(1) {
+      z-index: 7;
+      transition: var(--transition);
+    }
+
+    body .pages_page:nth-of-type(2) {
+      z-index: 6;
+      transition: var(--transition);
+    }
+
+    body .pages_page:nth-of-type(3) {
+      z-index: 5;
+      transition: var(--transition);
+    }
+
+    body .pages_page:nth-of-type(4) {
+      z-index: 4;
+      transition: var(--transition);
+    }
+
+    body .pages_page:nth-of-type(5) {
+      z-index: 3;
+      transition: var(--transition);
+    }
+
+    body .pages_page:nth-of-type(6) {
+      z-index: 2;
+      transition: var(--transition);
+    }
+
+    body .pages_page:nth-of-type(7) {
+      z-index: 1;
+      transition: var(--transition);
+    }
+
+    body .pages_page:nth-of-type(8) {
+      z-index: 1;
+      transition: var(--transition);
+    }
+    body .pages_page:nth-of-type(9) {
+      z-index: 0;
+      transition: var(--transition);
+    }
+
+    body .pages_page:nth-of-type(1) {
+      left: 0;
+      z-index: 0;
+      transform: rotateY(0deg) !important;
+      pointer-events: none;
+    }
+
+    body .pages_page:nth-of-type(1) .pages_page__inner {
+      transform: rotateY(0deg) !important;
+    }
+
+    body .pages_page:nth-of-type(2) {
+      pointer-events: all;
+    }
+
+    body .pages_page:nth-of-type(odd) .pages_page__inner {
+      transform: rotateY(180deg);
+    }
+
+    body .pages_page:nth-of-type(2) .pages_page__inner {
+      background-size: 870px !important;
+      background-position: center !important;
+      /* background: url("https://data.whicdn.com/images/86911589/original.jpg"); */
+    }
+
+    body .pages_page:nth-of-type(3) .pages_page__inner {
+      /* background: url("https://iso.500px.com/wp-content/uploads/2014/12/fashion_1.jpg"); */
+      background-position: 0 0;
+    }
+
+    body .pages_page:nth-of-type(5) .pages_page__inner,
+    body .pages_page:nth-of-type(6) .pages_page__inner {
+      background: #4a5f5c;
+    }
+
+    body .pages_page:nth-of-type(7) .pages_page__inner {
+      /* background: url("http://ruthrose.co.uk/wp-content/uploads/2018/04/lingerie-fashion-photographer-photography-shoot-fitness-swimwear-shoot180317_POCKET9661-f1.jpg"); */
+      /* background-position: 0 0; */
+      /* background-size: 1400px !important; */
+    }
+
+    body .pages_page:nth-of-type(8) .pages_page__inner {
+      /* background: url("http://ruthrose.co.uk/wp-content/uploads/2018/04/lingerie-fashion-photographer-photography-shoot-fitness-swimwear-shoot180317_POCKET9661-f1.jpg"); */
+      /* background-position: 0 0; */
+    }
+
+    body .pages_page:nth-of-type(9) .pages_page__inner .content {
+      -webkit-clip-path: polygon(50% 0%, 100% 0, 100% 100%, 50% 100%);
+      clip-path: polygon(50% 0%, 100% 0, 100% 100%, 50% 100%);
+      height: 100%;
+      width: 200%;
+      position: absolute;
+      left: -100%;
+    }
+
+    body .pages_page:nth-of-type(8) .pages_page__inner .bg {}
+
+    body .pages_page__inner {
+      /* background: url("https://www.colorfusionstudio.com/wp-content/uploads/2015/07/cfs-models-003-683x1024.jpg"); */
+      /* background-size: 1400px !important; */
+      height: 100%;
+      transform-style: preserve-3d;
+    }
+
+    body .pages_page__inner .control {
+      position: absolute;
+      z-index: 1;
+      width: 31px;
+      height: 31px;
+      border: 1px solid var(--yellow);
+      border-radius: 100px;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 30px;
+      cursor: pointer;
+      transition: all 0.23s;
+      box-shadow: 0 0 0 0px #bf9726;
+    }
+
+    body .pages_page__inner .control:hover {
+      box-shadow: 0 0 0 10px rgba(191, 151, 38, 0.3);
+      left: 34px;
+    }
+
+    body .pages_page__inner .control:hover:before {
+      width: 40px;
+      left: -40px;
+    }
+
+    body .pages_page__inner .control.next {
+      left: auto;
+      right: 30px;
+    }
+
+    body .pages_page__inner .control.next:hover {
+      right: 34px;
+    }
+
+    body .pages_page__inner .control.next:hover:before {
+      width: 40px;
+      right: -40px;
+    }
+
+    body .pages_page__inner .control.next:before {
+      left: auto;
+      right: -33px;
+    }
+
+    body .pages_page__inner .control.next:after {
+      transform: rotate(180deg);
+      top: 5px;
+      left: 11px;
+      pointer-events: none;
+    }
+
+    body .pages_page__inner .control label {
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      cursor: pointer;
+    }
+
+    body .pages_page__inner .control:after {
+      content: "";
+      display: block;
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      color: var(--yellow);
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: all 0.2s;
+    }
+
+    body .pages_page__inner .control:before {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--yellow);
+      top: 50%;
+      transform: translateY(-50%);
+      left: -32px;
+      transition: all 0.2s;
+    }
+
+    body .pages_page__inner .content {
+      transform-style: preserve-3d;
+      position: absolute;
+      z-index: 1;
+      pointer-events: none;
+      top: 0;
+      transform: translateZ(0px);
+      width: 100%;
+      height: 100%;
+    }
+
+    body .pages_page__inner .content_center img {
+      width: auto;
+    }
+
+    body .pages_page__inner .content_center h6:nth-of-type(2) {
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    body .pages_page__inner .content_center.right {
+      right: auto;
+      left: -130px;
+      -webkit-clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%);
+      clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%);
+    }
+
+    body .pages_page__inner .content_picture {
+      width: 220px;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-40px);
+      top: 294px;
+    }
+
+    body .pages_page__inner .content_picture img {
+      width: 100%;
+      margin: 0;
+      display: inline-block;
+    }
+
+    body .pages input[type=radio]:nth-of-type(2):checked+input+input+div+div {
+      pointer-events: all;
+      transform: rotateY(-180deg);
+      z-index: 10;
+      transition: var(--transition);
+    }
+
+    body .pages input[type=radio]:nth-of-type(2):checked+input+input+div+div .control {
+      box-shadow: 0 0 0 200px rgba(0, 0, 0, 0);
+    }
+
+    body .pages input[type=radio]:nth-of-type(2):checked+input+input+div+div+div {
+      pointer-events: all;
+    }
+
+    body .pages input[type=radio]:nth-of-type(2):checked+input+input+div {
+      pointer-events: none;
+      z-index: 9;
+    }
+
+    body .pages input[type=radio]:nth-of-type(2):checked+input+input+div+div+div {
+      pointer-events: all;
+      transform: rotateY(-180deg);
+      z-index: 10;
+      transition: var(--transition);
+    }
+
+    body .pages input[type=radio]:nth-of-type(2):checked+input+input+div+div+div .control {
+      box-shadow: 0 0 0 200px rgba(0, 0, 0, 0);
+    }
+
+    body .pages input[type=radio]:nth-of-type(2):checked+input+input+div+div+div+div {
+      pointer-events: all;
+    }
+
+    body .pages input[type=radio]:nth-of-type(2):checked+input+input+div+div {
+      pointer-events: none;
+      z-index: 9;
+    }
+
+    body .pages input[type=radio]:nth-of-type(3):checked+input+div+div {
+      pointer-events: all;
+      transform: rotateY(-180deg);
+      z-index: 10;
+      transition: var(--transition);
+    }
+
+    body .pages input[type=radio]:nth-of-type(3):checked+input+div+div .control {
+      box-shadow: 0 0 0 200px rgba(0, 0, 0, 0);
+    }
+
+    body .pages input[type=radio]:nth-of-type(3):checked+input+div+div+div {
+      pointer-events: all;
+    }
+
+    body .pages input[type=radio]:nth-of-type(3):checked+input+div {
+      pointer-events: none;
+      z-index: 9;
+    }
+
+    body .pages input[type=radio]:nth-of-type(3):checked+input+div+div+div {
+      pointer-events: all;
+      transform: rotateY(-180deg);
+      z-index: 10;
+      transition: var(--transition);
+    }
+
+    body .pages input[type=radio]:nth-of-type(3):checked+input+div+div+div .control {
+      box-shadow: 0 0 0 200px rgba(0, 0, 0, 0);
+    }
+
+    body .pages input[type=radio]:nth-of-type(3):checked+input+div+div+div+div {
+      pointer-events: all;
+    }
+
+    body .pages input[type=radio]:nth-of-type(3):checked+input+div+div {
+      pointer-events: none;
+      z-index: 9;
+    }
+
+    body .pages input[type=radio]:nth-of-type(3):checked+input+div+div+div+div {
+      pointer-events: all;
+      transform: rotateY(-180deg);
+      z-index: 10;
+      transition: var(--transition);
+    }
+
+    body .pages input[type=radio]:nth-of-type(3):checked+input+div+div+div+div .control {
+      box-shadow: 0 0 0 200px rgba(0, 0, 0, 0);
+    }
+
+    body .pages input[type=radio]:nth-of-type(3):checked+input+div+div+div+div+div {
+      pointer-events: all;
+    }
+
+    body .pages input[type=radio]:nth-of-type(3):checked+input+div+div+div {
+      pointer-events: none;
+      z-index: 9;
+    }
+
+    body .pages input[type=radio]:nth-of-type(3):checked+input+div+div+div+div+div {
+      pointer-events: all;
+      transform: rotateY(-180deg);
+      z-index: 10;
+      transition: var(--transition);
+    }
+
+    body .pages input[type=radio]:nth-of-type(3):checked+input+div+div+div+div+div .control {
+      box-shadow: 0 0 0 200px rgba(0, 0, 0, 0);
+    }
+
+    body .pages input[type=radio]:nth-of-type(3):checked+input+div+div+div+div+div+div {
+      pointer-events: all;
+    }
+
+    body .pages input[type=radio]:nth-of-type(3):checked+input+div+div+div+div {
+      pointer-events: none;
+      z-index: 9;
+    }
+
+    body .pages input[type=radio]:nth-of-type(4):checked+div+div {
+      pointer-events: all;
+      transform: rotateY(-180deg);
+      z-index: 10;
+      transition: var(--transition);
+    }
+
+    body .pages input[type=radio]:nth-of-type(4):checked+div+div .control {
+      box-shadow: 0 0 0 200px rgba(0, 0, 0, 0);
+    }
+
+    body .pages input[type=radio]:nth-of-type(4):checked+div+div+div {
+      pointer-events: all;
+    }
+
+    body .pages input[type=radio]:nth-of-type(4):checked+div {
+      pointer-events: none;
+      z-index: 9;
+    }
+
+    body .pages input[type=radio]:nth-of-type(4):checked+div+div+div {
+      pointer-events: all;
+      transform: rotateY(-180deg);
+      z-index: 10;
+      transition: var(--transition);
+    }
+
+    body .pages input[type=radio]:nth-of-type(4):checked+div+div+div .control {
+      box-shadow: 0 0 0 200px rgba(0, 0, 0, 0);
+    }
+
+    body .pages input[type=radio]:nth-of-type(4):checked+div+div+div+div {
+      pointer-events: all;
+    }
+
+    body .pages input[type=radio]:nth-of-type(4):checked+div+div {
+      pointer-events: none;
+      z-index: 9;
+    }
+
+    body .pages input[type=radio]:nth-of-type(4):checked+div+div+div+div {
+      pointer-events: all;
+      transform: rotateY(-180deg);
+      z-index: 10;
+      transition: var(--transition);
+    }
+
+    body .pages input[type=radio]:nth-of-type(4):checked+div+div+div+div .control {
+      box-shadow: 0 0 0 200px rgba(0, 0, 0, 0);
+    }
+
+    body .pages input[type=radio]:nth-of-type(4):checked+div+div+div+div+div {
+      pointer-events: all;
+    }
+
+    body .pages input[type=radio]:nth-of-type(4):checked+div+div+div {
+      pointer-events: none;
+      z-index: 9;
+    }
+
+    body .pages input[type=radio]:nth-of-type(4):checked+div+div+div+div+div {
+      pointer-events: all;
+      transform: rotateY(-180deg);
+      z-index: 10;
+      transition: var(--transition);
+    }
+
+    body .pages input[type=radio]:nth-of-type(4):checked+div+div+div+div+div .control {
+      box-shadow: 0 0 0 200px rgba(0, 0, 0, 0);
+    }
+
+    body .pages input[type=radio]:nth-of-type(4):checked+div+div+div+div+div+div {
+      pointer-events: all;
+    }
+
+    body .pages input[type=radio]:nth-of-type(4):checked+div+div+div+div {
+      pointer-events: none;
+      z-index: 9;
+    }
+
+    body .pages input[type=radio]:nth-of-type(4):checked+div+div+div+div+div+div {
+      pointer-events: all;
+      transform: rotateY(-180deg);
+      z-index: 10;
+      transition: var(--transition);
+    }
+
+    body .pages input[type=radio]:nth-of-type(4):checked+div+div+div+div+div+div .control {
+      box-shadow: 0 0 0 200px rgba(0, 0, 0, 0);
+    }
+
+    body .pages input[type=radio]:nth-of-type(4):checked+div+div+div+div+div+div+div+div {
+      pointer-events: all;
+    }
+
+    body .pages input[type=radio]:nth-of-type(4):checked+div+div+div+div+div {
+      pointer-events: none;
+      z-index: 9;
+    }
+
+    body .pages input[type=radio]:nth-of-type(4):checked+div+div+div+div+div+div+div {
+      pointer-events: all;
+      transform: rotateY(-180deg);
+      z-index: 10;
+      transition: var(--transition);
+    }
+  </style>
+</head>
+
+<body>
+  <div class='pages'>
+    <input id='one' name='trigger' type='radio'>
+    <input id='two' name='trigger' type='radio'>
+    <input id='three' name='trigger' type='radio'>
+    <input id='four' name='trigger' type='radio'>
+    <div class='pages_page'>
+      <div class='pages_page__inner'>
+        <div class='overlayimg'>
+          <img src="https://staging.jaclyncreations.com/wp-content/uploads/2022/12/Raw-Vegan-Recipe-Book-cover.jpg" alt="" width="100%" height="100%">
+        </div>
+      </div>
+    </div>
+
+
+    
+    <div class='pages_page'>
+      <div class='pages_page__inner'>
+        <div class='content'>
+          <div class='content_center right'>
+          </div>
+          <div class='overlayimg'>
+            <img src="https://staging.jaclyncreations.com/wp-content/uploads/2022/12/Raw-Vegan-Recipe-Book-2.jpg" alt="" width="100%">
+          </div>
+        </div>
+        <div class='control next'>
+          <label for='two'></label>
+        </div>
+      </div>
+    </div>
+    <div class='pages_page'>
+      <div class='pages_page__inner'>
+        <!-- <div class='logo'>Fashion</div> -->
+        <!-- <div class='pagenumber'>2 3</div> -->
+        <div class='control'>
+          <label for='one'></label>
+        </div>
+        <div class='overlayimg'>
+          <img src="https://staging.jaclyncreations.com/wp-content/uploads/2022/12/Raw-Vegan-Recipe-Book-3.jpg" alt="" width="100%">
+        </div>
+       
+      </div>
+    </div>
+    <div class='pages_page'>
+      <div class='pages_page__inner'>
+      
+        <div class='control next'>
+          <label for='three'></label>
+        </div>
+
+        <div class='overlayimg'>
+          <img src="https://staging.jaclyncreations.com/wp-content/uploads/2022/12/Raw-Vegan-Recipe-Book-4.jpg" alt="" width="100%">
+        </div>
+      </div>
+    </div>
+    <div class='pages_page'>
+      <div class='pages_page__inner'>
+      
+        <div class='overlayimg'>
+          <img src="https://staging.jaclyncreations.com/wp-content/uploads/2022/12/Raw-Vegan-Recipe-Book-5.jpg" alt="" width="100%">
+        </div>
+        <div class='control'>
+          <label for='two'></label>
+        </div>
+      </div>
+    </div>
+    
+    <div class='pages_page'>
+      <div class='pages_page__inner'>
+       
+        <div class='control next'>
+          <label for='four'></label>
+        </div>
+      
+        <div class='overlayimg'>
+          <img src="https://staging.jaclyncreations.com/wp-content/uploads/2022/12/Raw-Vegan-Recipe-Book-6.jpg" alt="" width="100%">
+        </div>
+      </div>
+    </div>
+    <div class='pages_page'>
+      <div class='pages_page__inner'>
+        <div class='overlayimg'>
+          <img src="https://staging.jaclyncreations.com/wp-content/uploads/2022/12/Raw-Vegan-Recipe-Book-7.jpg" alt="" width="100%">
+        </div>
+        <div class='control'>
+          <label for='three'></label>
+        </div>
+      </div>
+    </div>
+    <div class='pages_page'>
+      <div class='pages_page__inner'>
+       
+        <div class='control next'>
+          <label for='four'></label>
+        </div>
+       
+        <div class='overlayimg'>
+          <img src="https://staging.jaclyncreations.com/wp-content/uploads/2022/12/Raw-Vegan-Recipe-Book-8.jpg" alt="" width="100%">
+        </div>
+      </div>
+    </div>
+
+
+    <!--  -->
+    <div class='pages_page'>
+      <div class='pages_page__inner'>
+        <div class='overlayimg'>
+          <img src="https://staging.jaclyncreations.com/wp-content/uploads/2022/12/Raw-Vegan-Recipe-Book-9.jpg" alt="" width="100%">
+        </div>
+        <div class='control'>
+          <label for='three'></label>
+        </div>
+      </div>
+    </div>
+    <div class='pages_page'>
+      <div class='pages_page__inner'>
+       
+        <div class='control next'>
+          <label for='four'></label>
+        </div>
+       
+        <div class='overlayimg'>
+          <img src="https://staging.jaclyncreations.com/wp-content/uploads/2022/12/Raw-Vegan-Recipe-Book-10.jpg" alt="" width="100%">
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
